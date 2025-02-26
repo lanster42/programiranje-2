@@ -1,0 +1,2 @@
+{} upirablas da skupej zdruzis stvari, basically kukr nardijo v real lifeu ().
+if v rustu: if () {} else if () {} else…. Te {} pove, da vzamemo vse te podatke v njih, ker bi drugace if in else vzela le prvo naslednjo stvar. ko imamo else if ()… bo else vzel eno stvar, ki je if, zato ni treba veckrat napisat else saj zajame cel naslednji kos.vse spremenljivke/funkcije definirane v oklepajih{} so lokalne, tj. ne vidimo jih kasneje v kodi.

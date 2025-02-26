@@ -9,33 +9,38 @@ fn time_it<F: FnOnce() -> R, R>(f: F) -> Duration {
 fn on_stack() {
     // Narišite shemo spreminjanja sklada in kopice
     // Za vsako vrstico napiši, kolikokrat se v pomnilniku pojavi 13?
-    let mut a = [13; 100];
+    let mut a = [13; 100]; // s tem se 100x13 shrani na sklad
     let mut b = a;
-    let q = String::from("13");
-    println!("{}", q);
+    let q = String::from("13"); //s tem se 13 shrani na kopico
+    println!("{}", q); //ker printa od q ne vzame lastnistva ampak le pozaze na pointer :)
     let r = q;
-    let p = &r;
-    a[0] = 1;
+    let p = &r; //z & poskrbimo da p ne vzame lastnistva od r ampak si le sposodi vrednost od r. Obratna operacija od & je *!    
+    a[0] = 1; //prvi element v arrayu nastavimo na 1 (eno trinajstko smo izgubili)
     {
         let c = &b;
-        println!("{}", c[0]);
+        println!("{}", c[0]); //prvi element od b, kar je 13, sprintamo
     }
-    println!("{}", b[0]);
-    println!("{}", a[0]);
-    println!("{}", p);
-    println!("{}", r);
-    // println!("{}", q); // Razloži, zakaj to ne deluje
+    println!("{}", b[0]); //to je 13
+    println!("{}", a[0]); //to je 1
+    println!("{}", p); //to je box od 13, ampak print ga zna odpakirati, zato je 13
+    println!("{}", r); //to je enako kot p tj. bo 13
+    // println!("{}", q); // To je deluje ker se q ni prenesel v r, ampak se je prenesel v p
+}
+
+fn swap(x: i32, y: i32)-> (i32, i32){
+    return (y,x)
 }
 
 /// Napišite funkcijo `swap`, ki zamenja vrednosti dveh celoštevilskih spremenljivk.
 fn test_swap() {
     // V spremenljivko `a` shranite vrednost 13, v spremenljivko `b` pa vrednost 42.
-
-    // println!("a: {}, b: {}", a, b);
+    let mut a = 13;
+    let mut b = 42;
+    println!("a: {}, b: {}", a, b);
     // Izpiše `a: 13, b: 42`.
 
     // Naredite swap s pomočjo pomožne funkcije `swap`.
-    // ...
+    let (a: i32, b: i32) = swap(x:&a, y:&b);
     //
 
     // println!("a: {}, b: {}", a, b);
