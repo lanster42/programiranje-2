@@ -41,4 +41,16 @@ impl AZ {
 
 fn main() {
     println!("Hello, world!");
+    impl reset{panic!();}
+}
+
+
+//ce hoces, da novo definiran tip se vedno zadosca nekemu drugemu tipu (da ne dobis errrorja ker ga ne zna retvort v string na primer) Primer:
+impl<T:Display> Par<T> {
+    fn sestej(&self, other: &self) -> Par<T>{
+        Par{
+            x: self.x + other.x,
+            y: self.y + other.y
+        }
+    }
 }
